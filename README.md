@@ -306,12 +306,36 @@ Beyond scope.
 
 1. Under your Pages project, click "Custom domains"
 1. Domain name: **`www.[your-project]`**
+1. Click "**Configure DNS**"
+1. Copy the offered `*.pages.dev` value
 
+#### Add CNAME Record in Route 53
 
-#### Add a DNS record for your Frontend In Route 53
+* In Route 53, add a new DNS record for your project domain
+* Click **Hosted Zones**
+* Click your domain
+* Click the orange "**Create record**" button 
+    * Record name: `www`
+    * Record type: **CNAME**
+    * Alias: **no/off**
+    * Value: **`[pages.dev value from Cloudflare].`**
+        * Note the trailing dot; that matters!
+        * e.g. `your-project.pages.dev.`
+    * TTL (seconds): **60**
+    * Routing policy: **Simple routing**
+    * Click the orange "**Create records**" button
 
+#### Resume Custom Domain Setup in Cloudflare
+
+1. Click blue "**Check DNS records**" button
+1. Cloudflare will say "starting search"
+1. Wait 10-20 seconds
+1. 1. Cloudflare will say "starting search"
+1. A green dialog will pop up saying "**Domain activated. Your DNS setup is complete.**"
+1. Click blue "**Continue**" link
+1. You'll be shown the list of custom domains that are active for your Cloudflare Pages site
 
 ## System Test
 
-1. Go to https://[your project]
+1. Go to https://www.[your domain]
 1. Click **Sign Up**
