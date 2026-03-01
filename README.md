@@ -57,10 +57,10 @@ Use the appropriate two values from Kinde that you wrote down earlier.
 #### Update serverless.yml
 
 * Update `backend/serverless.yml` in this repository
+    * `provider.region`: ***(the AWS region code you are deploying your API backend to, e.g. `af-south-1`)***
     * `provider.domain.name`: **`api.[your domain]`**
     * `provider.httpApi.authorizers.kindeTokenAuthorizer.issuerUrl`: **"Domain" field from Kinde Backend app**
     * `provider.httpApi.authorizers.kindeTokenAuthorizer.audience`: **`https://api.[your domain]`**
-    * `functions.userGet.iam.role.statements.Resource`: ***(update both resoruces to `...:/parameter/[your project]/backend/auth/...`***
 
 ### Deploy Backend
 
