@@ -118,14 +118,15 @@ domain:
 
 ### Test Backend
 
-#### Ping Endpoint
+#### Test "Ping" Endpoint
 
 ```
-time curl -i -H "Origin: https://[your domain]" https://api.[your domain]/api/v001/ping
+time curl -i -H "Origin: https://[your domain]" -H "Accept: application/json" https://api.[your domain]/api/v001/ping
 ```
 
 Result:
 ```
+HTTP/2 200
 date: Tue, 24 Feb 2026 12:43:31 GMT
 content-type: application/json
 content-length: 26
@@ -135,17 +136,39 @@ apigw-requestid: ZSV2Bh7CCfMEPSw=
 {
     "message": "Pong!"
 }
-real    0m0.788s
-user    0m0.019s
-sys     0m0.003s
+real    0m4.103s
+user    0m0.017s
+sys     0m0.004s
 ```
 
 Note: we passed the Origin request header and the API replied saying it was an allowed origin, 
 so this is a CORS-friendly API
 
-Run this a few times to see the cold start penalty drop.
+#### See the effect of Lambda cold starts
 
-#### Get User Endpoint
+That four second response time from the API *hurts*.
+
+Re-run the `curl` command 1-2 more times to see how the response times are once the Lambda is warm.
+
+```
+HTTP/2 200
+date: Sun, 01 Mar 2026 13:49:09 GMT
+content-type: application/json
+content-length: 26
+access-control-allow-origin: https://serverless-jamstack-auth.click
+apigw-requestid: Zi-Jei8myK4EJgQ=
+
+{
+    "message": "Pong!"
+}
+real    0m0.188s
+user    0m0.016s
+sys     0m0.002s
+```
+
+Going from 4,100 milliseconds to under 200 milliseconds is a dramatic improvement.
+
+#### Test "Get User" Endpoint
 
 ```
 $ time curl -i -H "Origin: https://[your domain]" https://api.[your domain]/api/v001/user
