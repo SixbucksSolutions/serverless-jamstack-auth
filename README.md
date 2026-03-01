@@ -313,7 +313,12 @@ Beyond scope.
 1. Watch the build 
 1. When it reads **`Upload complete`**, you're done
 
-#### Add Custom Domain
+### What Got Deployed
+
+[insert pic showing how UI plugs in]
+
+
+### Add Custom Domain
 
 1. Under your Pages project, click "**Custom domains**"
 1. Domain name: **`www.[your-project]`**
@@ -323,7 +328,7 @@ Beyond scope.
 1. Click blue "**Begin CNAME setup**"
 1. Copy the offered `*.pages.dev` value
 
-#### Add CNAME Record in Route 53
+### Add CNAME Record in Route 53
 
 * In Route 53, add a new DNS record for your project domain
 * Click **Hosted Zones**
@@ -339,7 +344,7 @@ Beyond scope.
     * Routing policy: **Simple routing**
     * Click the orange "**Create records**" button
 
-#### Resume Custom Domain Setup in Cloudflare
+### Resume Custom Domain Setup in Cloudflare
 
 1. Click blue "**Check DNS records**" button
 1. Cloudflare will say "starting search"
@@ -351,5 +356,27 @@ Beyond scope.
 
 ## System Test
 
-1. Go to https://www.[your domain]
+1. Go to `https://www.[your domain]`
 1. Click **Sign Up**
+1. Provide email/password or give permission to let another social provider authenticate you.
+1. Get redirected back to the homepage but it shows you logged in
+1. Take bearer token value from console
+
+```
+curl -s -H "Accept: application/json" -H "Authorization: Bearer [bearer token]" https://api.[your domain] | jq
+```
+
+Output will be similar to:
+```
+{
+  "id": "kp_...",
+  "preferred_email": "terry.ott@sixbuckssolutions.com",
+  "last_name": "Ott",
+  "first_name": "Terry",
+  "is_suspended": false,
+  "total_sign_ins": 2,
+  "failed_sign_ins": 0,
+  "last_signed_in": "2026-03-01T19:54:37.337802+00:00",
+  "created_on": "2026-03-01T19:47:41.070375+00:00"
+}
+```
