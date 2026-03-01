@@ -29,6 +29,7 @@ is at R53.
 
 #### Store Kinde Parameters For Lambda Function
 
+* Go to the AWS console in the region where the REST API will be deployed
 * Systems Manager Parameter Store
     * /[your project]/backend/kinde-client-id
     * /[your project]/backend/kinde-client-secret
