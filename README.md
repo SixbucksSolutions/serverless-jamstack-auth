@@ -237,8 +237,8 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
 #### Create Frontend Kinde Application
 
 1. Log into kinde.com
-1. Click Settings > Applications
-1. Click Add Application
+1. Click **Settings > Applications**
+1. Click **Add Application**
     * Name: "**[your project] Frontend**"
     * Type: Select "**Front-end and mobile**"
     * Click "**Save**"
@@ -282,12 +282,12 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
 1. `cd .../serverless-jamstacl-auth/frontend`
 1. Edit the `.env` file.
     * `VITE_KINDE_CLIENT_ID`: ***(Value written down when creating frontend application)*** 
-        * NOTE: totally public value, not sensitive at all -- post it on a billboard!
-    * `VITE_KINDE_DOMAIN`: ***`[your-project].kinde.com`***
+    * `VITE_KINDE_DOMAIN`: ***`https://[your-project].kinde.com`***
     * `VITE_KINDE_REDIRECT_URL` : ***`https://www.[your domain]`***
     * `VITE_KINDE_LOGOUT_URL` : ***`https://www.[your domain]`***
     * `VITE_KINDE_TOKEN_AUDIENCE`: ***`https://api.[your domain]`***
 
+Note: these are all considered very public, as the JavaScript client can't hide any secrets.
 
 ### Deploy Frontend
 
