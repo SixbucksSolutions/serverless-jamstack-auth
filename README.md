@@ -98,27 +98,38 @@ Result:
 
 #### Install latest LTS Version Of NodeJS
 
-Beyond scope.
+I like using nvm as described [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-3-installing-node-using-the-node-version-manager).
 
 #### Install Serverless Framework 
 
-Beyond scope.
+```
+npm install -g serverless
+```
 
 #### Register/Login to Serverless 
 
-Beyond scope.
+```
+serverless login
+```
 
 #### Install Docker
 
-Beyond scope.
+I like the instructions [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
 
 #### Give current user the ability to execute Docker commands without sudo
 
-Beyond scope
+```
+sudo usermod -aG docker ${USER}
+```
+
+Log out and back in.
 
 #### Give the current user the ability to create all needed resources in AWS
 
-Beyond scope.
+
+I'm lazy and give full AdministratorAccess to the EC2 I'm on.
+
+If you want to be better, go for it.
 
 #### Deploy
 
