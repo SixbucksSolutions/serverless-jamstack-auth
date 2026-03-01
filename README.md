@@ -133,12 +133,15 @@ Result:
 I like installing using `nvm` ([Node Version Manager](https://www.nvmnode.com/)) as described 
 [here](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04#option-3-installing-node-using-the-node-version-manager).
 
-For this writeup I used node v24.14.0 (latest LTS as of this writing).
+I used **node v24.14.0** (latest LTS as of this writing) for this writeup.
 
 #### Install Serverless Framework 
 
 ```
 npm install -g serverless
+
+serverless version
+Serverless ϟ Framework 4.33.0
 ```
 
 #### Register/Login to Serverless 
