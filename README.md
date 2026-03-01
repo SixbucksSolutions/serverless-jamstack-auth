@@ -15,14 +15,14 @@ is hosted with R53 because it dramatically simplifies TLS certificiates and DNS 
 
 #### Create Kinde Application For API Backend
 
-* Settings > Applications > Add Application
+* **Settings > Applications > Add Application**
     * Name: **"[your project] Backend"**
     * Type: **Machine to machine**
     * Click **Save**
 * Write down
-    * Domain
-    * Client ID
-    * Client Secret
+    * **Domain**
+    * **Client ID**
+    * **Client Secret**
 
 
 #### Prepare the Management API for the Backend Application
