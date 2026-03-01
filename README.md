@@ -26,7 +26,7 @@ Hosting the domain at R53 makes integration with other AWS services much easier.
 
 You can host your DNS elsewhere and make it work, but this writeup will be written assuming 
 the project domain is hosted with R53 because it **dramatically** simplifies several aspects of
-an already-complicated recipe (namely: TLS certificate deployment and DNS for the API Gateway.
+an already-complicated recipe (namely: TLS certificate deployment and DNS for the API Gateway).
 
 ## Recent Ubuntu-ish bash Shell To Run Commands
 
