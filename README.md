@@ -1,8 +1,6 @@
 # serverless-jamstack-auth
-Demonstration of a serverless JAMstack frontend/REST API backend with full user authentication
-# jamstack-auth-quickstart-backend
 
-Serverless REST API backend for the JAMstack Auth Quickstart project
+Receipe for a fully-serverless JAMstack frontend/REST API backend that does full user registration/authentication.
 
 ## API Backend
 
@@ -15,22 +13,30 @@ You can host it elsewhere, but this writeup will be written assumin gthe project
 is at R53, but this writeup will be written assumin gthe project domain
 is at R53.
 
-#### Create Kinde Application
+#### Create Kinde Application For API Backend
 
-1. Log into kinde.com
-1. Add Application
-    * Enter a name
-    * Type: "Front-end and mobile", then Save
-    * In Quick start, select JavaScript then Save
-    * Select Existing codebase tab (under Technology, next to "Starter kit")
-    * Where is your project running: "https://[your domain]" and click Set
-    * Click Set next to callback URL and logout URL (accept defaults)
-    * Note your app-specific Kinde domain (e.g., `https://your-proj.kinde.com`)
+* Settings > Applications > Add Application
+    * Name: "[your project] Backend"
+    * Type: Machine to machine
+    * Click Save
+* Write down
+    * Client ID
+    * Client Secret
+
+#### Create api CNAME
+
+(OBE, Serverless Framework integration will handle)
+
+#### Store Kinde Parameters For Lambda Function
+
+* Systems Manager Parameter Store
+    * /[your project]/backend/kinde-client-id
+    * /[your project]/backend/kinde-client-secret
 
 #### Register your API
 
 * Admin > Settings > APIs
-* Name: Something memorable
+* Name: {Your project] Backend
 * Audience: https://api.[your domain]
 * Click Save
 
@@ -41,19 +47,6 @@ is at R53.
 * Your new API will show up
 * Click triple dots
 * Click "Authorize application"
-
-#### Create Kinde Application For API Backend
-
-* Settings > Applications > Add Application
-    * Name: jamstack-auth-quickstart-backend
-    * Type: Machine to machine
-    * Click Create
-* Write down
-    * Custom Domain
-    * Client ID
-    * Client Secret
-
-
 
 #### Prepare the Management API for the Backend Application
 
@@ -174,37 +167,16 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
 
 ### Prep Frontend
 
-#### Add auth CNAME
+#### Create Frontend Kinde Application
 
-To to your DNS and add a CNAME from auth.[your-dmain] to your Kinde OIDC server.
-
-#### Test CNAME
-
-```
-$ dig auth.jamstack-auth.publicntp.net
-
-; <<>> DiG 9.18.39-0ubuntu0.24.04.2-Ubuntu <<>> auth.jamstack-auth.publicntp.net
-;; global options: +cmd
-;; Got answer:
-;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 43191
-;; flags: qr rd ra; QUERY: 1, ANSWER: 3, AUTHORITY: 0, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 65494
-;; QUESTION SECTION:
-;auth.jamstack-auth.publicntp.net. IN   A
-
-;; ANSWER SECTION:
-auth.jamstack-auth.publicntp.net. 41 IN CNAME   sixbuckssolutionsllc.kinde.com.
-sixbuckssolutionsllc.kinde.com. 41 IN   A       35.160.27.135
-sixbuckssolutionsllc.kinde.com. 41 IN   A       52.40.72.86
-
-;; Query time: 0 msec
-;; SERVER: 127.0.0.53#53(127.0.0.53) (UDP)
-;; WHEN: Fri Feb 27 09:47:08 UTC 2026
-;; MSG SIZE  rcvd: 137
-```
-
-So the CNAME is up.
-
+1. Log into kinde.com
+1. Click Settings > Applications
+1. Click Add Application
+    * Enter a name
+    * Type: "Front-end and mobile", then Save
+    * In Quick start, select JavaScript then Save
+    * Select Existing codebase tab (under Technology, next to "Starter kit")
+    * Where is your project running: "https://[your domain]" and click Set
+    * Click Set next to callback URL and logout URL (accept defaults)
+    * Note your app-specific Kinde domain (e.g., `https://your-proj.kinde.com`)
 
