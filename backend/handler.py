@@ -124,6 +124,13 @@ def _get_kinde_secrets() -> dict[str, str]:
         if required_key not in retrieved_values:
             raise RuntimeError(f"Did not populate required key \"{required_key}\"")
 
+    # If the domain is stored with the "https://" prefix, trim that off, as it blows up the
+    #   management client something fierce
+    domain_prefix_to_remove: str = "https://"
+    if retrieved_values['domain'].startswith(domain_prefix_to_remove):
+        _logger.debug("Found https:// prefix on domain value, stripping it off because the SDK _hates_ it")
+        retrieved_values['domain'] = retrieved_values['domain'][len(domain_prefix_to_remove):]
+
     _logger.debug("Successfully read all required secrets from Parameter Store")
 
     return retrieved_values
