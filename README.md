@@ -358,7 +358,7 @@ Beyond scope.
 
 1. Go to `https://www.[your domain]`
 1. Click **Sign Up**
-1. Provide email/password or give permission to let another social provider authenticate you.
+1. Provide email/password or give permission to let another social provider authenticate you
 1. Get redirected back to the homepage but it shows you logged in
 1. Take bearer token value from console
 
