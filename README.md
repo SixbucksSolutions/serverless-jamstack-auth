@@ -27,8 +27,8 @@ is at R53.
 #### Prepare the Management API for the Backend Application
 
 ##### Authorize Backend To Interact With Kinde Management API
-* In Kinde, navigate to Applications > Backend App > APIs
 
+* In Kinde, navigate to Applications > Backend App > APIs
 * Click triple dots next to Kinde Management API
 * Click "Authorize application"
 * The "Is authorized" check will appear for the Kinde Management API
