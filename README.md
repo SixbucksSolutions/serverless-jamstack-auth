@@ -72,6 +72,18 @@ Beyond scope.
 
 Beyond scope.
 
+#### Install Docker
+
+Beyond scope.
+
+#### Give current user the ability to execute Docker commands without sudo
+
+Beyond scope
+
+#### Give the current user the ability to create all needed resources in AWS
+
+Beyond scope.
+
 #### Deploy
 
 ```
