@@ -9,7 +9,7 @@ service: serverless-jamstack-auth-backend
 
 provider:
   name: aws
-  region: us-west-1
+  region: us-west-2
   runtime: python3.14
 
   domain:

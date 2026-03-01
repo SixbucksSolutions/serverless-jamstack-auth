@@ -96,6 +96,10 @@ Result:
 
 ### Deploy Backend
 
+#### Install latest LTS Version Of NodeJS
+
+Beyond scope.
+
 #### Install Serverless Framework 
 
 Beyond scope.
