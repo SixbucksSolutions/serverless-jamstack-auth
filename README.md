@@ -10,8 +10,7 @@ Receipe for a fully-serverless JAMstack frontend/REST API backend that does full
 
 Hosting the domain at R53 makes later integration with other AWS services much easier.
 You can host it elsewhere, but this writeup will be written assumin gthe project domain
-is at R53, but this writeup will be written assumin gthe project domain
-is at R53.
+is at R53, but this writeup will be written assuming the project domain is at R53.
 
 #### Create Kinde Application For API Backend
 
