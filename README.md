@@ -224,23 +224,37 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
 1. Log into kinde.com
 1. Click Settings > Applications
 1. Click Add Application
-    * Enter a name
-    * Type: "Front-end and mobile", then Save
-    * In Quick start, select JavaScript then Save
-    * Select Existing codebase tab (under Technology, next to "Starter kit")
-    * Where is your project running: "https://[your domain]" and click Set
-    * Click Set next to callback URL and logout URL (accept defaults)
-    * Note your app-specific Kinde domain (e.g., `https://your-proj.kinde.com`)
+    * Name: "**[your project] Frontendi**"
+    * Type: Select "**Front-end and mobile**"
+    * Click "**Save**"
+1. Click "**Details**" on left menu
+1. Write down
+    * **Domain**
+    * **Client ID**
+1. In **Callback URLs"
+    * Set **Application homepage URI** to "`https://[your domain]`"
+    * Set **Allowed callback URLs** to "`https://[your domain]`"
+    * Set **Allowed logout redirect URLs** to "`https://[your domain]`"
+1. In **Authentication experience**
+    * Disable "**Ask for user first name and last name**"
+1. Click **Save**
 
-#### Register your API in Kinde
+#### Set Authentication Methods
 
-* Admin > Settings > APIs
+1. Click **Authentication** on left menu
+1. For this app
+    * Disable: **Email + code**
+    * Enable: **Email + password** (and any social connections selected when creating Kinde project)
+1. Click **Save**
+
+#### Register your REST API Backend in Kinde
+
+* Click **APIs** on left menu
 * Name: {Your project] Backend
 * Audience: https://api.[your domain]
 * Click Save
 
 #### Hook your API to your app in Kinde
-
 
 * Admin > Settings > Application > API's
 * Your new API will show up
