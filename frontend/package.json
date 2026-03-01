@@ -1,0 +1,17 @@
+{
+  "name": "jamstack-aut-quickstart-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "tsc & vite build"
+  },
+  "devDependencies": {
+    "npm-check-updates": "^19.6.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.1"
+  },
+  "dependencies": {
+    "@kinde-oss/kinde-auth-pkce-js": "^4.3.0"
+  }
+}
