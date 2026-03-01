@@ -12,13 +12,13 @@ You can host your DNS elsewhere and make it work, but this writeup will be writt
 the project domain is hosted with R53 because it **dramatically** simplifies several aspects of
 an already-complicated recipe (namely: TLS certificate deployment and DNS for the API Gateway.
 
-## Ubuntu-ish bash Shell To Run Commands
+## Recent Ubuntu-ish bash Shell To Run Commands
 
-I used an Ubuntu 24.04 EC2 instance to run the CLI stuff in this recipe.
+I used an Ubuntu 24.04 LTS EC2 instance to run the CLI stuff in this recipe.
 
 There's nothing stopping you from using Mac or Windows or Slackware circa 1994.
 
-If you use something other than a new Ubuntu, your steps may differ from mine.
+If you use something other than a new Debian/Ubuntu flavor, your steps may differ from mine.
 
 ## API Backend
 
