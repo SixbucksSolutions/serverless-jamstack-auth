@@ -135,14 +135,17 @@ I like installing using `nvm` ([Node Version Manager](https://www.nvmnode.com/))
 
 I used **node v24.14.0** (latest LTS as of this writing) for this writeup.
 
-#### Install Serverless Framework 
+#### Install Serverless Framework v4.X
 
 ```
 npm install -g serverless
-
-serverless version
-Serverless ϟ Framework 4.33.0
 ```
+
+I used **[Serverless Framework](https://www.serverless.com/) version 4.33.0**.
+
+Version four of Serverless Framework is a non-trivial jump in capabilities.
+If `serverless deploy` fails to parse the `serverless.yml`, an older major
+release is likely the issue.
 
 #### Register/Login to Serverless 
 
