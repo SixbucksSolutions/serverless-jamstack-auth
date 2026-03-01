@@ -315,7 +315,7 @@ Beyond scope.
 
 #### Add Custom Domain
 
-1. Under your Pages project, click "Custom domains"
+1. Under your Pages project, click "**Custom domains**"
 1. Domain name: **`www.[your-project]`**
 1. Click "**Configure DNS**"
 1. Copy the offered `*.pages.dev` value
