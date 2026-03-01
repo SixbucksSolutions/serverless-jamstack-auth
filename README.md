@@ -6,11 +6,12 @@ Receipe for a fully-serverless JAMstack frontend/REST API backend that does full
 
 ### Prepare API Backend
 
-#### Project Domain Hosted By AWS Route 53
+#### Project DNS Domain Hosted By AWS Route 53
 
 Hosting the domain at R53 makes later integration with other AWS services much easier.
-You can host it elsewhere, but this writeup will be written assumin gthe project domain
-is at R53, but this writeup will be written assuming the project domain is at R53.
+
+You can host your DNS elsewhere, but this writeup will be written assuming the project domain
+is hosted with R53 because it dramatically simplifies TLS certificiates and DNS setup.
 
 #### Create Kinde Application For API Backend
 
