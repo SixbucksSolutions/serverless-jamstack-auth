@@ -249,15 +249,16 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
 
 #### Register your REST API Backend in Kinde
 
-* Click **APIs** on left menu
-* Name: {Your project] Backend
-* Audience: https://api.[your domain]
-* Click Save
+* Go to top level **Home > Settings > APIs**
+* Click "**Add API**"
+* Name: **[Your project] Backend**
+* Audience: **https://api.[your domain]**
+* Click **Save**
 
-#### Hook your API to your app in Kinde
+#### Hook your API to your Frontend App in Kinde
 
-* Admin > Settings > Application > API's
-* Your new API will show up
-* Click triple dots
-* Click "Authorize application"
+* While in your API, click "**Applications**"
+* Click triple dots next to "**[your project] Frontend**"
+* Click "**Authorize application**"
+* A check mark will show up on "**Is authorized**" for "[your project] Frontend"
 
