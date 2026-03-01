@@ -116,6 +116,7 @@ Beyond scope.
 #### Deploy
 
 ```
+cd .../serverless-jamstack-auth/backend
 serverless deploy
 ```
 
@@ -168,7 +169,7 @@ sys     0m0.004s
 Note: we passed the Origin request header. The API replied with a header saying the offered origin is an allowed origin, 
 making this API CORS-friendly.
 
-#### See the effect of Lambda cold starts
+#### Lambda Cold Start Penalty
 
 That four second response time from the API *hurts*.
 
@@ -224,7 +225,7 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
 1. Log into kinde.com
 1. Click Settings > Applications
 1. Click Add Application
-    * Name: "**[your project] Frontendi**"
+    * Name: "**[your project] Frontend**"
     * Type: Select "**Front-end and mobile**"
     * Click "**Save**"
 1. Click "**Details**" on left menu
@@ -239,7 +240,7 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
     * Disable "**Ask for user first name and last name**"
 1. Click **Save**
 
-#### Set Authentication Methods
+#### Set Kinde Frontend App Authentication Methods
 
 1. Click **Authentication** on left menu
 1. For this app
@@ -255,10 +256,17 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
 * Audience: **https://api.[your domain]**
 * Click **Save**
 
-#### Hook your API to your Frontend App in Kinde
+#### Authorize Kinde Frontend App To Get Tokens For REST API Backend
 
 * While in your API, click "**Applications**"
 * Click triple dots next to "**[your project] Frontend**"
 * Click "**Authorize application**"
 * A check mark will show up on "**Is authorized**" for "[your project] Frontend"
 
+#### Update Frontend Config
+
+```
+cd .../serverless-jamstacl-auth/frontend
+```
+
+Edit the `.env` file.
