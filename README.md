@@ -143,7 +143,8 @@ npm install -g serverless
 
 I used [Serverless Framework](https://www.serverless.com/) **version 4.33.0**.
 
-Version four of Serverless Framework introduced no breaking changes from version three.
+Serverless Framework V4 
+[introduced no breaking changes from version three](https://www.serverless.com/framework/docs/guides/upgrading-v4).
 If `serverless deploy` fails to parse the `serverless.yml`, it's possible you're 
 running a pre-V3 version of `serverless`.
 
