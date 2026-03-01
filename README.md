@@ -277,17 +277,24 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
     * `VITE_KINDE_LOGOUT_URL` : ***`https://[your domain]`***
     * `VITE_KINDE_TOKEN_AUDIENCE`: ***`https://api.[your domain]`***
 
-#### Don't forget to update backend
-
-1. Read client_id/client_secret from Parameter Store
-
-
 #### Login to Cloudflare
 
 Beyond scope.
 
 #### Create Cloudflare Pages Project
 
+1. Under Build, expand **Compute**
+1. Select **Workers & Pages**
+1. Click **Create Application** in top right
+1. Select **Get Started** in the middle of the page next to "Looking to deploy Pages?"
+
 asdfsf
 
-#### Pop A Cold One
+#### Add Custom Domain
+asfdasdfasf
+
+
+## System Test
+
+1. Go to https://[your project]
+1. Click **Sign Up**
