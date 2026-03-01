@@ -152,7 +152,8 @@ serverless login
 
 #### Install Docker
 
-I like the instructions [here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
+I like the instructions 
+[here](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04).
 
 #### Give current user the ability to execute Docker commands without sudo
 
