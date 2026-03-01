@@ -15,7 +15,6 @@ You can host it elsewhere, but this writeup will be written assumin gthe project
 is at R53, but this writeup will be written assumin gthe project domain
 is at R53.
 
-
 #### Create Kinde Application
 
 1. Log into kinde.com
