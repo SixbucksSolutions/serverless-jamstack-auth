@@ -97,23 +97,23 @@ def user_get(event, context):
 def _get_kinde_secrets() -> dict[str, str]:
 
     # Read two secrets we need to talk to Kinde Mgmt API
-    parameter_store_response = _ssm_client.get_parameters( Names=client_token_signing_jwks_param_store_paths )
+    parameter_store_response = _ssm_client.get_parameters( Names=_kinde_secrets_param_store_paths )
 
     if not 'Parameters' in parameter_store_response: 
         raise RuntimeError("Parameter store response did not have Parameters field")
 
     retrieved_values: dict[str, str] = {}
 
-    ssm_path_to_key_mapping: dict[str, str] = {
+    ssm_path_to_key_mappings: dict[str, str] = {
         "/backend/auth/domain"          : "domain",
         "/backend/auth/client-id"       : "client_id",
         "/backend/auth/client-secret"   : "client_secret",
     }
 
     for curr_param_entry in parameter_store_response['Parameters']:
-        for possible_path_ending in ssm_path_to_key_mapping:
+        for possible_path_ending in ssm_path_to_key_mappings:
             if curr_param_entry['Name'].endswith(possible_path_ending):
-                retrieved_values[ ssm_path_to_key_mapping[possible_path_ending] ] = curr_param_entry['Value']
+                retrieved_values[ ssm_path_to_key_mappings[possible_path_ending] ] = curr_param_entry['Value']
                 # Done processing this parameter
                 break
         else:

@@ -47,6 +47,7 @@ functions:
               - 'ssm:GetParameter'
               - 'ssm:GetParameters'
             Resource:
+              - 'arn:aws:ssm:${aws:region}:${aws:accountId}:parameter/serverless-jamstack-auth/backend/auth/domain'
               - 'arn:aws:ssm:${aws:region}:${aws:accountId}:parameter/serverless-jamstack-auth/backend/auth/client-id'
               - 'arn:aws:ssm:${aws:region}:${aws:accountId}:parameter/serverless-jamstack-auth/backend/auth/client-secret'
 
