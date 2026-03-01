@@ -46,13 +46,18 @@ is at R53, but this writeup will be written assuming the project domain is at R5
 * Go to the AWS console in the region where the REST API will be deployed
 * Systems Manager > Parameter Store 
     * Kinde Client ID
-        * Path: **`/[your project]/backend/auth/client-id`**
+        * Path: **`/serverless-jamstack-auth/backend/auth/client-id`**
         * Type: **String**
     * Kinde Client Secret
-        * Path: **`/[your project]/backend/auth/client-secret`**
+        * Path: **`/serverless-jamstack-auth/backend/auth/client-secret`**
         * Type: **String**
 
 Use the appropriate two values from Kinde that you wrote down earlier.
+
+#### Update Allowed Origin Host
+
+* Update `backend/handler.py`
+    * Set `allowed_origin_url` at the top of the file to **`https://[your domain]`**
 
 #### Update serverless.yml
 
@@ -93,33 +98,30 @@ serverless deploy
 Output will be similar to:
 
 ```
+✔ Service deployed to stack serverless-jamstack-auth-backend-dev (99s)
+
 endpoints:
-  GET - https://8od6x91bvf.execute-api.af-south-1.amazonaws.com/api/v001/ping
-  GET - https://8od6x91bvf.execute-api.af-south-1.amazonaws.com/api/v001/user
+  GET - https://[...].execute-api.[your API region].amazonaws.com/api/v001/ping
+  GET - https://[...].execute-api.[your API region].amazonaws.com/api/v001/user
 functions:
-  ping: jamstack-auth-quickstart-dev-ping (1.1 kB)
-  userGet: jamstack-auth-quickstart-dev-userGet (1.1 kB)
+  ping: serverless-jamstack-auth-backend-dev-ping (15 MB)
+  userGet: serverless-jamstack-auth-backend-dev-userGet (15 MB)
 domain:
-  name: api.jamstack-auth.publicntp.net
-  target: d-tarosfuk7b.execute-api.af-south-1.amazonaws.com
-  zone id: Z2DHW2332DAMTN
+  name: api.[your domain]
+  target: [...].execute-api.[your API region].amazonaws.com
+  zone id: [...]
 ```
 
-#### Prepare the Management API for the Backend Application
+#### What Got Deployed
 
-* Applications > Backend App > APIs
-* Enable mgmt API for the backend API
-* ***add scopes***
-
-
-#### What got deployed
+[insert diagram here]
 
 ### Test Backend
 
 #### Ping Endpoint
 
 ```
-time curl -i -H "Origin: https://jamstack-auth.publicntp.net" https://api.jamstack-auth.publicntp.net/api/v001/ping
+time curl -i -H "Origin: https://[your domain]" https://api.[your domain]/api/v001/ping
 ```
 
 Result:
@@ -127,7 +129,7 @@ Result:
 date: Tue, 24 Feb 2026 12:43:31 GMT
 content-type: application/json
 content-length: 26
-access-control-allow-origin: https://jamstack-auth.publicntp.net
+access-control-allow-origin: [your domain]
 apigw-requestid: ZSV2Bh7CCfMEPSw=
 
 {
@@ -146,7 +148,7 @@ Run this a few times to see the cold start penalty drop.
 #### Get User Endpoint
 
 ```
-$ time curl -i -H "Origin: https://jamstack-auth.publicntp.net" https://8od6x91bvf.execute-api.af-south-1.amazonaws.com/api/v001/user
+$ time curl -i -H "Origin: https://[your domain]" https://api.[your domain]/api/v001/user
 ```
 
 Result:

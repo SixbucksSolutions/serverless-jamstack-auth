@@ -7,6 +7,8 @@ import kinde_sdk.management
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+allowed_origin_url: str = "https://serverless-jamstack-auth.click"
+
 
 def ping(event, context):
 
@@ -17,7 +19,7 @@ def ping(event, context):
     response = {
         "statusCode"    : 200, 
         "headers": {
-            "Access-Control-Allow-Origin": "https://jamstack-auth.publicntp.net",
+            "Access-Control-Allow-Origin": allowed_origin_url,
             "Content-Type": "application/json",
         },
         "body"          : json.dumps(body, indent=4, sort_keys=True), 
@@ -39,7 +41,7 @@ def user_get(event, context):
         return {
             "statusCode"    : 500,
             "headers": {
-                "Access-Control-Allow-Origin": "https://jamstack-auth.publicntp.net",
+                "Access-Control-Allow-Origin": allowed_origin_url,
                 "Access-Control-Allow-Credentials": True,
                 "Content-Type": "application/json",
             },
@@ -71,7 +73,7 @@ def user_get(event, context):
     response = {
         "statusCode"    : 200,
         "headers": {
-            "Access-Control-Allow-Origin": "https://jamstack-auth.publicntp.net",
+            "Access-Control-Allow-Origin": allowed_origin_url,
             "Access-Control-Allow-Credentials": True,
             "Content-Type": "application/json",
         },
