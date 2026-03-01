@@ -17,7 +17,7 @@ is at R53, but this writeup will be written assuming the project domain is at R5
 * Settings > Applications > Add Application
     * Name: **"[your project] Backend"**
     * Type: **Machine to machine**
-    * Click Save
+    * Click **Save**
 * Write down
     * Domain
     * Client ID
@@ -30,15 +30,15 @@ is at R53, but this writeup will be written assuming the project domain is at R5
 
 * In Kinde, navigate to Applications > Backend App > APIs
 * Click triple dots next to Kinde Management API
-* Click "Authorize application"
-* The "Is authorized" check will appear for the Kinde Management API
+* Click "**Authorize application**"
+* The "**Is authorized**" check will appear for the Kinde Management API
 
 #### Authorize Backend API For Neessary Management API Operations
 
 * Click triple dots next to the Kinde Management API
-* Click "Manage scopes"
-* Click the enable toggle for the `read:users` scope
-* Click Save
+* Click "**Manage scopes**"
+* Click the enable toggle for the **`read:users`** scope
+* Click **Save**
 * Note that the Scopes column for the Kinde Mangagement API now reads "1"
 
 #### Store Kinde Parameters For Lambda Function
@@ -56,8 +56,7 @@ Use the appropriate two values from Kinde that you wrote down earlier.
 
 #### Update serverless.yml
 
-* Go to api/
-* Update serverless.yml
+* Update `backend/serverless.yml` in this repository
     * `provider.domain.name`: **`api.[your domain]`**
     * `provider.httpApi.authorizers.kindeTokenAuthorizer.issuerUrl`: **"Domain" field from Kinde Backend app**
     * `provider.httpApi.authorizers.kindeTokenAuthorizer.audience`: **`https://api.[your domain]`**
