@@ -317,8 +317,8 @@ Beyond scope.
 
 1. Under your Pages project, click "**Custom domains**"
 1. Domain name: **`www.[your-project]`**
-  * Cloudflare Pages do not support sites at root of a domain *unless* they host the domain
-  * Not willing to give that up based on all the TLS/DNS goodness we get for hosting at R53
+    * Cloudflare Pages do not support sites at root of a domain *unless* they host the domain
+    * Not willing to give that up based on all the TLS/DNS goodness we get for hosting at R53
 1. Click "**Configure DNS**"
 1. Copy the offered `*.pages.dev` value
 
