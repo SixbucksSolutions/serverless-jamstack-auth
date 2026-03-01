@@ -172,13 +172,11 @@ Result:
 HTTP/2 200
 date: Tue, 24 Feb 2026 12:43:31 GMT
 content-type: application/json
-content-length: 26
+content-length: 20
 access-control-allow-origin: www.[your domain]
 apigw-requestid: ZSV2Bh7CCfMEPSw=
 
-{
-    "message": "Pong!"
-}
+{"message": "Pong!"}
 real    0m4.103s
 user    0m0.017s
 sys     0m0.004s
@@ -197,13 +195,11 @@ Re-run the `curl` command 1-2 more times to see how the response times are once 
 HTTP/2 200
 date: Sun, 01 Mar 2026 13:49:09 GMT
 content-type: application/json
-content-length: 26
+content-length: 20
 access-control-allow-origin: https://www.[your domain]
 apigw-requestid: Zi-Jei8myK4EJgQ=
 
-{
-    "message": "Pong!"
-}
+{"message": "Pong!"}
 real    0m0.188s
 user    0m0.016s
 sys     0m0.002s
