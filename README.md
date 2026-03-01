@@ -169,7 +169,7 @@ sys     0m0.002s
 
 Going from 4,100 milliseconds to under 200 milliseconds is a dramatic improvement.
 
-#### Test "Get User" Endpoint
+#### Test An Endpoint For Logged-In Users
 
 ```
 $ time curl -i -H "Origin: https://[your domain]" -H "Accept: application/json" https://api.[your domain]/api/v001/user
@@ -187,7 +187,7 @@ apigw-requestid: ZbyEkhg1ifMEJLA=
 {"message":"Unauthorized"}
 ```
 
-Got a 401 "Not Authorized" response because we didn't pass authentication.
+Got a 401 "Not Authorized" response from AWS API Gateway because we aren't logged in to the app.
 
 Note the `www-authenticate: Bearer` header that APIGW attaches. It tells the client
 what credentials this endpoint expects (in our case, an OAuth bearer token).
