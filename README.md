@@ -23,6 +23,25 @@ is at R53.
     * Client ID
     * Client Secret
 
+
+#### Prepare the Management API for the Backend Application
+
+##### Authorize Backend To Interact With Kinde Management API
+* In Kinde, navigate to Applications > Backend App > APIs
+
+* Click triple dots next to Kinde Management API
+* Click "Authorize application"
+* The "Is authorized" check will appear for the Kinde Management API
+
+#### Authorize Backend API For Neessary Management API Operations
+
+* Click triple dots next to the Kinde Management API
+* Click "Manage scopes"
+* Click the enable toggle for the `read:users` scope
+* Click Save
+* Note that the Scopes column for the Kinde Mangagement API now reads "1"
+
+
 #### Create api CNAME
 
 (OBE, Serverless Framework integration will handle)
@@ -32,11 +51,13 @@ is at R53.
 * Go to the AWS console in the region where the REST API will be deployed
 * Systems Manager > Parameter Store 
     * Kinde Client ID
-        * Path: `/[your project]/backend/kinde-client-id`
+        * Path: `/[your project]/backend/auth/client-id`
+        * Type: String
     * Kinde Client Secret
-        * Path: `/[your project]/backend/kinde-client-secret`
+        * Path: `/[your project]/backend/auth/client-secret`
+        * Type: String
 
-Use the values you wrote down in the previous step.
+Use the two values from Kinde you wrote down above.
 
 #### Register your API
 
@@ -59,20 +80,12 @@ Use the values you wrote down in the previous step.
 * Enable mgmt API for the backend API
 * ***add scopes***
 
-#### Store Backend Parameters In Parameter Store
-
-* add parameters
-
 #### Give the getUser method permissions to read those parameter store keys
 
 * Fafauth has that I think?
 * Yeah https://github.com/TerryOtt/fafauth/blob/main/api/af-south-1/serverless.yml#L29
 
-#### Get TLS cert for API Backend 
-
-Think this is OBE, serverless will provision this for me since we have R53/ACM.
- 
-#### Modify serverless.yml
+#### Update serverless.yml
 
 * Go to api/
 * Update serverless.yml
@@ -110,9 +123,12 @@ domain:
   zone id: Z2DHW2332DAMTN
 ```
 
-#### Add api CNAME
+#### Prepare the Management API for the Backend Application
 
-api.[your domain] CNAME to d-tarosfuk7b.execute-api.af-south-1.amazonaws.com
+* Applications > Backend App > APIs
+* Enable mgmt API for the backend API
+* ***add scopes***
+
 
 #### What got deployed
 
@@ -184,4 +200,19 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
     * Where is your project running: "https://[your domain]" and click Set
     * Click Set next to callback URL and logout URL (accept defaults)
     * Note your app-specific Kinde domain (e.g., `https://your-proj.kinde.com`)
+
+#### Register your API in Kinde
+
+* Admin > Settings > APIs
+* Name: {Your project] Backend
+* Audience: https://api.[your domain]
+* Click Save
+
+#### Hook your API to your app in Kinde
+
+
+* Admin > Settings > Application > API's
+* Your new API will show up
+* Click triple dots
+* Click "Authorize application"
 
