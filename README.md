@@ -29,8 +29,8 @@ is hosted with R53 because it dramatically simplifies TLS certificiates and DNS 
 
 ##### Authorize Backend To Interact With Kinde Management API
 
-* In Kinde, navigate to Applications > Backend App > APIs
-* Click triple dots next to Kinde Management API
+* In Kinde, **navigate to Applications > Backend App > APIs**
+* Click the **triple dots next to Kinde Management API**
 * Click "**Authorize application**"
 * The "**Is authorized**" check will appear for the Kinde Management API
 
