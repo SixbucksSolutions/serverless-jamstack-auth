@@ -1,6 +1,22 @@
 # serverless-jamstack-auth
 
-Receipe for a fully-serverless JAMstack frontend/REST API backend that does full user registration/authentication.
+Receipe for an aentirely serverless JAMstack frontend/REST API backend deployment that offers 
+full self-service user registration/authentication.
+
+## Inspiration
+
+After hearing about Kinde being supremely excellent for devs to integrate with, I gave it a
+whirl.
+
+I came away so thoroughly impressed, I wanted a reminder to myself that a fully-authenticated
+JAMstack system that is nothing but JS running in your browser talking to a serverless REST API
+isn't as overwhelming/intimidating as it used to be.
+
+This GitHuib repo is kind of a "starter" for me on my own projects, to remind myself that in 75 
+minutes I can be sending authenticated requests that APIGW validates and sends to a Lambda 
+function.
+
+Help getting stuff built is a positive, and I know others who could benefit. So here ya go! :)
 
 ## Assumptions
 
