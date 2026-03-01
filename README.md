@@ -110,7 +110,9 @@ Need to confirm our backend will be able to perform the needed actions with the 
 * Copy the **Access Token**
 
 ```
-curl --silent -H "Accept: application/json" -H "Authorization: Bearer [access token from Kinde]" https://[your-project].kinde.com/api/v1/users | jq
+curl -s -H "Accept: application/json" \
+-H "Authorization: Bearer [access token from Kinde]" \
+https://[your-project].kinde.com/api/v1/users | jq
 ``` 
 
 Result:
@@ -239,7 +241,9 @@ Going from 4,100 milliseconds to under 200 milliseconds is a dramatic improvemen
 #### Test An Endpoint For Logged-In Users
 
 ```
-$ time curl -i -H "Origin: https://www.[your domain]" -H "Accept: application/json" https://api.[your domain]/api/v001/user
+$ time curl -i -H "Origin: https://www.[your domain]" \
+-H "Accept: application/json" \
+https://api.[your domain]/api/v001/user
 ```
 
 Result:
@@ -392,7 +396,9 @@ Beyond scope.
 1. Take bearer token value from console
 
 ```
-curl -s -H "Accept: application/json" -H "Authorization: Bearer [bearer token]" https://api.[your domain] | jq
+curl -s -H "Accept: application/json" \
+-H "Authorization: Bearer [bearer token]" \
+https://api.[your domain] | jq
 ```
 
 Output will be similar to:
