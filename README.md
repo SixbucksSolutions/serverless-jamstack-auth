@@ -37,17 +37,6 @@ is at R53, but this writeup will be written assuming the project domain is at R5
 
 * Click triple dots next to the Kinde Management API
 * Click "Manage scopes"
-    iam:
-      role:
-        statements:
-          # Permission to get exactly two specific parameters for our function to avoid needing to push code due to an IdP change
-          - Effect: 'Allow'
-            Action:
-              - 'ssm:GetParameter'
-              - 'ssm:GetParameters'
-            Resource:
-              - 'arn:aws:ssm:${aws:region}:${aws:accountId}:parameter/fafauth/apigw_custom_authorizer/client_token_signing_keys_jwks'
-              - 'arn:aws:ssm:${aws:region}:${aws:accountId}:parameter/fafauth/apigw_custom_authorizer/token_claims_validation_values'
 * Click the enable toggle for the `read:users` scope
 * Click Save
 * Note that the Scopes column for the Kinde Mangagement API now reads "1"
@@ -72,7 +61,7 @@ Use the appropriate two values from Kinde that you wrote down earlier.
     * `provider.domain.name`: **`api.[your domain]`**
     * `provider.httpApi.authorizers.kindeTokenAuthorizer.issuerUrl`: **"Domain" field from Kinde Backend app**
     * `provider.httpApi.authorizers.kindeTokenAuthorizer.audience`: **`https://api.[your domain]`**
-    * `functions.userGet.iam.role.statements.Resource`: ***(update to `...:/parameter/[your project]/backend/auth/...`***
+    * `functions.userGet.iam.role.statements.Resource`: ***(update both resoruces to `...:/parameter/[your project]/backend/auth/...`***
 
 ### Deploy Backend
 
