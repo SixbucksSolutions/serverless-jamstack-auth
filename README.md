@@ -16,10 +16,11 @@ is at R53.
 #### Create Kinde Application For API Backend
 
 * Settings > Applications > Add Application
-    * Name: "[your project] Backend"
-    * Type: Machine to machine
+    * Name: **"[your project] Backend"**
+    * Type: **Machine to machine**
     * Click Save
 * Write down
+    * Domain
     * Client ID
     * Client Secret
 
@@ -41,7 +42,6 @@ is at R53.
 * Click Save
 * Note that the Scopes column for the Kinde Mangagement API now reads "1"
 
-
 #### Create api CNAME
 
 (OBE, Serverless Framework integration will handle)
@@ -51,34 +51,13 @@ is at R53.
 * Go to the AWS console in the region where the REST API will be deployed
 * Systems Manager > Parameter Store 
     * Kinde Client ID
-        * Path: `/[your project]/backend/auth/client-id`
-        * Type: String
+        * Path: **`/[your project]/backend/auth/client-id`**
+        * Type: **String**
     * Kinde Client Secret
-        * Path: `/[your project]/backend/auth/client-secret`
-        * Type: String
+        * Path: **`/[your project]/backend/auth/client-secret`**
+        * Type: **String**
 
-Use the two values from Kinde you wrote down above.
-
-#### Register your API
-
-* Admin > Settings > APIs
-* Name: {Your project] Backend
-* Audience: https://api.[your domain]
-* Click Save
-
-#### Hook your API to your app
-
-
-* Admin > Settings > Application > API's
-* Your new API will show up
-* Click triple dots
-* Click "Authorize application"
-
-#### Prepare the Management API for the Backend Application
-
-* Applications > Backend App > APIs
-* Enable mgmt API for the backend API
-* ***add scopes***
+Use the appropriate two values from Kinde that you wrote down earlier.
 
 #### Give the getUser method permissions to read those parameter store keys
 
@@ -89,14 +68,16 @@ Use the two values from Kinde you wrote down above.
 
 * Go to api/
 * Update serverless.yml
-    * provider.domain.name: api.[your domain]
-    * provider.domain.certificateArn: [ARN of imported cert in ACM from last step]
-    * provider.httpApi.authorizers.kinde.TokenAuthorizer.issuerUrl: https://[your-project].kinde.com 
-
+    * `provider.domain.name`: **`api.[your domain]`**
+    * `provider.httpApi.authorizers.kindeTokenAuthorizer.issuerUrl`: **"Domain" field from Kinde Backend app**
+    * `provider.httpApi.authorizers.kindeTokenAuthorizer.audience`: **`https://api.[your domain]`**
+    * `functions.userGet.iam.role.statements.Resource`: ***(update to `...:/parameter/[your project]/backend/auth/...`***
 
 ### Deploy Backend
 
 #### Install Serverless Framework 
+
+Beyond scope.
 
 #### Register/Login to Serverless 
 
@@ -104,7 +85,7 @@ Beyond scope.
 
 #### Deploy
 
-```bash
+```
 serverless deploy
 ```
 
