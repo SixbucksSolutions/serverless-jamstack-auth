@@ -2,16 +2,27 @@
 
 Receipe for a fully-serverless JAMstack frontend/REST API backend that does full user registration/authentication.
 
+## Assumptions
+
+### Project DNS Domain Hosted By AWS Route 53
+
+Hosting the domain at R53 makes integration with other AWS services much easier.
+
+You can host your DNS elsewhere and make it work, but this writeup will be written assuming 
+the project domain is hosted with R53 because it **dramatically** simplifies several aspects of
+an already-complicated recipe (namely: TLS certificate deployment and DNS for the API Gateway.
+
+## Ubuntu-ish bash Shell To Run Commands
+
+I used an Ubuntu 24.04 EC2 instance to run the CLI stuff in this recipe.
+
+There's nothing stopping you from using Mac or Windows or Slackware circa 1994.
+
+If you use something other than a new Ubuntu, your steps may differ from mine.
+
 ## API Backend
 
 ### Prepare API Backend
-
-#### Project DNS Domain Hosted By AWS Route 53
-
-Hosting the domain at R53 makes later integration with other AWS services much easier.
-
-You can host your DNS elsewhere, but this writeup will be written assuming the project domain
-is hosted with R53 because it dramatically simplifies TLS certificiates and DNS setup.
 
 #### Create Kinde Application For API Backend
 
