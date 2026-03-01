@@ -8,7 +8,7 @@ import kinde_sdk.management
 _logger = logging.getLogger()
 _logger.setLevel(logging.INFO)
 
-_allowed_origin_url: str = "https://serverless-jamstack-auth.click"
+_allowed_origin_url: str = "https://www.serverless-jamstack-auth.click"
 
 _ssm_client = boto3.client('ssm')
 

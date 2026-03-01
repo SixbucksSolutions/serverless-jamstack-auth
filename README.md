@@ -61,7 +61,7 @@ Use the appropriate values from Kinde that you wrote down earlier.
 #### Update Allowed Origin Host
 
 * Update `backend/handler.py`
-    * Set `allowed_origin_url` at the top of the file to **`https://[your domain]`**
+    * Set `allowed_origin_url` at the top of the file to **`https://www.[your domain]`**
 
 #### Update serverless.yml
 
@@ -149,7 +149,7 @@ domain:
 #### Test "Ping" Endpoint
 
 ```
-time curl -i -H "Origin: https://[your domain]" -H "Accept: application/json" https://api.[your domain]/api/v001/ping
+time curl -i -H "Origin: https://www.[your domain]" -H "Accept: application/json" https://api.[your domain]/api/v001/ping
 ```
 
 Result:
@@ -158,7 +158,7 @@ HTTP/2 200
 date: Tue, 24 Feb 2026 12:43:31 GMT
 content-type: application/json
 content-length: 26
-access-control-allow-origin: [your domain]
+access-control-allow-origin: www.[your domain]
 apigw-requestid: ZSV2Bh7CCfMEPSw=
 
 {
@@ -183,7 +183,7 @@ HTTP/2 200
 date: Sun, 01 Mar 2026 13:49:09 GMT
 content-type: application/json
 content-length: 26
-access-control-allow-origin: https://serverless-jamstack-auth.click
+access-control-allow-origin: https://www.[your domain]
 apigw-requestid: Zi-Jei8myK4EJgQ=
 
 {
@@ -199,7 +199,7 @@ Going from 4,100 milliseconds to under 200 milliseconds is a dramatic improvemen
 #### Test An Endpoint For Logged-In Users
 
 ```
-$ time curl -i -H "Origin: https://[your domain]" -H "Accept: application/json" https://api.[your domain]/api/v001/user
+$ time curl -i -H "Origin: https://www.[your domain]" -H "Accept: application/json" https://api.[your domain]/api/v001/user
 ```
 
 Result:
@@ -236,9 +236,9 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
     * **Domain**
     * **Client ID**
 1. In **Callback URLs"
-    * Set **Application homepage URI** to "`https://[your domain]`"
-    * Set **Allowed callback URLs** to "`https://[your domain]`"
-    * Set **Allowed logout redirect URLs** to "`https://[your domain]`"
+    * Set **Application homepage URI** to "`https://www.[your domain]`"
+    * Set **Allowed callback URLs** to "`https://www.[your domain]`"
+    * Set **Allowed logout redirect URLs** to "`https://www.[your domain]`"
 1. In **Authentication experience**
     * Disable "**Ask for user first name and last name**"
 1. Click **Save**
@@ -273,9 +273,12 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
     * `VITE_KINDE_CLIENT_ID`: ***(Value written down when creating frontend application)*** 
         * NOTE: totally public value, not sensitive at all -- post it on a billboard!
     * `VITE_KINDE_DOMAIN`: ***`[your-project].kinde.com`***
-    * `VITE_KINDE_REDIRECT_URL` : ***`https://[your domain]`***
-    * `VITE_KINDE_LOGOUT_URL` : ***`https://[your domain]`***
+    * `VITE_KINDE_REDIRECT_URL` : ***`https://www.[your domain]`***
+    * `VITE_KINDE_LOGOUT_URL` : ***`https://www.[your domain]`***
     * `VITE_KINDE_TOKEN_AUDIENCE`: ***`https://api.[your domain]`***
+
+
+### Deploy Frontend
 
 #### Login to Cloudflare
 
@@ -287,11 +290,25 @@ Beyond scope.
 1. Select **Workers & Pages**
 1. Click **Create Application** in top right
 1. Select **Get Started** in the middle of the page next to "Looking to deploy Pages?"
-
-asdfsf
+1. Click the **Get Started** button for "Import an existing Git repository"
+1. Select the proper **GitHub account** and **Repository** for your project
+1. Click blue **Begin setup** button
+    * Branch: **main**
+    * Framework present: **None**
+    * Build command: **`npm run build`** 
+    * Build output directory: **`dist`**
+    * Root directory (advanced): **`frontend`**
+1. Click blue **Save and Deploy** button
+1. Watch the build 
+1. When it reads **`Upload complete`**, you're done
 
 #### Add Custom Domain
-asfdasdfasf
+
+1. Under your Pages project, click "Custom domains"
+1. Domain name: **`www.[your-project]`**
+
+
+#### Add a DNS record for your Frontend In Route 53
 
 
 ## System Test
