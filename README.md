@@ -46,6 +46,9 @@ is hosted with R53 because it dramatically simplifies TLS certificiates and DNS 
 
 * Go to the AWS console in the region where the REST API will be deployed
 * Systems Manager > Parameter Store 
+    * Kinde Domain
+        * Path: **`/serverless-jamstack-auth/backend/auth/domain`**
+        * Type: **String**
     * Kinde Client ID
         * Path: **`/serverless-jamstack-auth/backend/auth/client-id`**
         * Type: **String**
@@ -53,7 +56,7 @@ is hosted with R53 because it dramatically simplifies TLS certificiates and DNS 
         * Path: **`/serverless-jamstack-auth/backend/auth/client-secret`**
         * Type: **String**
 
-Use the appropriate two values from Kinde that you wrote down earlier.
+Use the appropriate values from Kinde that you wrote down earlier.
 
 #### Update Allowed Origin Host
 
@@ -72,10 +75,10 @@ Use the appropriate two values from Kinde that you wrote down earlier.
 
 Need to confirm our backend will be able to perform the needed actions with the Kinde Management API.
 
-* In Kinde, Backend Application > APIs, click **Kinde Management API**.
+* In Kinde, Backend Application > APIs, click **Kinde Management API**
 * Click **Test** in the left menu
-* Select your backend app and click **Get Token**.
-* Copy the **Access Token**.
+* Select your backend app and click **Get Token**
+* Copy the **Access Token**
 
 ```
 curl --silent -H "Accept: application/json" -H "Authorization: Bearer [access token from Kinde]" https://[your-project].kinde.com/api/v1/users | jq
@@ -265,8 +268,26 @@ what credentials this endpoint expects (in our case, an OAuth bearer token).
 
 #### Update Frontend Config
 
-```
-cd .../serverless-jamstacl-auth/frontend
-```
+1. `cd .../serverless-jamstacl-auth/frontend`
+1. Edit the `.env` file.
+    * `VITE_KINDE_CLIENT_ID`: ***(Value written down when creating frontend application)*** 
+        * NOTE: totally public value, not sensitive at all -- post it on a billboard!
+    * `VITE_KINDE_DOMAIN`: ***`[your-project].kinde.com`***
+    * `VITE_KINDE_REDIRECT_URL` : ***`https://[your domain]`***
+    * `VITE_KINDE_LOGOUT_URL` : ***`https://[your domain]`***
+    * `VITE_KINDE_TOKEN_AUDIENCE`: ***`https://api.[your domain]`***
 
-Edit the `.env` file.
+#### Don't forget to update backend
+
+1. Read client_id/client_secret from Parameter Store
+
+
+#### Login to Cloudflare
+
+Beyond scope.
+
+#### Create Cloudflare Pages Project
+
+asdfsf
+
+#### Pop A Cold One
