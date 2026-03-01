@@ -30,7 +30,7 @@ is hosted with R53 because it dramatically simplifies TLS certificiates and DNS 
 ##### Authorize Backend To Interact With Kinde Management API
 
 * In Kinde, **navigate to Applications > Backend App > APIs**
-* Click the **triple dots next to Kinde Management API**
+* Click the **triple dots** on the "Kinde Management API" line
 * Click "**Authorize application**"
 * The "**Is authorized**" check will appear for the Kinde Management API
 
@@ -67,6 +67,29 @@ Use the appropriate two values from Kinde that you wrote down earlier.
     * `provider.domain.name`: **`api.[your domain]`**
     * `provider.httpApi.authorizers.kindeTokenAuthorizer.issuerUrl`: **"Domain" field from Kinde Backend app**
     * `provider.httpApi.authorizers.kindeTokenAuthorizer.audience`: **`https://api.[your domain]`**
+
+### Test Backend Interface To Kinde Management API
+
+Need to confirm our backend will be able to perform the needed actions with the Kinde Management API.
+
+* In Kinde, Backend Application > APIs, click **Kinde Management API**.
+* Click **Test** in the left menu
+* Select your backend app and click **Get Token**.
+* Copy the **Access Token**.
+
+```
+curl --silent -H "Accept: application/json" -H "Authorization: Bearer [access token from Kinde]" https://[your-project].kinde.com/api/v1/users | jq
+``` 
+
+Result:
+```
+{
+  "code": "OK",
+  "users": null,
+  "message": "Success",
+  "next_token": null
+}
+```
 
 ### Deploy Backend
 
