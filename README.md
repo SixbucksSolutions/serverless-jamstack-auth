@@ -38,13 +38,20 @@ is at R53.
 
 * Click triple dots next to the Kinde Management API
 * Click "Manage scopes"
+    iam:
+      role:
+        statements:
+          # Permission to get exactly two specific parameters for our function to avoid needing to push code due to an IdP change
+          - Effect: 'Allow'
+            Action:
+              - 'ssm:GetParameter'
+              - 'ssm:GetParameters'
+            Resource:
+              - 'arn:aws:ssm:${aws:region}:${aws:accountId}:parameter/fafauth/apigw_custom_authorizer/client_token_signing_keys_jwks'
+              - 'arn:aws:ssm:${aws:region}:${aws:accountId}:parameter/fafauth/apigw_custom_authorizer/token_claims_validation_values'
 * Click the enable toggle for the `read:users` scope
 * Click Save
 * Note that the Scopes column for the Kinde Mangagement API now reads "1"
-
-#### Create api CNAME
-
-(OBE, Serverless Framework integration will handle)
 
 #### Store Kinde Parameters For Lambda Function
 
@@ -58,11 +65,6 @@ is at R53.
         * Type: **String**
 
 Use the appropriate two values from Kinde that you wrote down earlier.
-
-#### Give the getUser method permissions to read those parameter store keys
-
-* Fafauth has that I think?
-* Yeah https://github.com/TerryOtt/fafauth/blob/main/api/af-south-1/serverless.yml#L29
 
 #### Update serverless.yml
 

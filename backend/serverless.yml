@@ -1,0 +1,63 @@
+# "org" ensures this Service is used with the correct Serverless Framework Access Key.
+org: firsttracks
+
+# "app" enables Serverless Framework Dashboard features and sharing them with other Services.
+app: serverless-jamstack-auth
+
+# "service" is the name of this project. This will also be added to your AWS resource names.
+service: serverless-jamstack-auth-backend
+
+provider:
+  name: aws
+  region: us-west-1
+  runtime: python3.14
+
+  domain:
+    name: api.serverless-jamstack-auth.click    # CloudFormation creates a TLS cert and DNS entry for this custom domain
+
+  httpApi:
+    disableDefaultEndpoint: true    # Disable default 'execute-api` as we are using custom domain
+    authorizers:
+      kindeTokenAuthorizer:
+        identitySource: $request.header.Authorization  # Passing bearer token in Authorization HTTP header
+        resultTtlInSeconds: 3600    # Cache allow/deny determinations per bearer token string for one hour
+        issuerUrl: https://sixbuckssolutionsllc.kinde.com   # "Domain" field from Kinde backend app
+        audience:
+          - https://api.serverless-jamstack-auth.click  # Audience causes APIGW to only accept tokens explicitly created for our API
+
+functions:
+
+  ping:
+    handler: handler.ping
+    memorySize: 1769
+    events:
+      - httpApi:
+          path: /api/v001/ping
+          method: get
+
+  userGet:
+    handler: handler.user_get
+    memorySize: 1769
+    iam:
+      role:
+        statements:
+          # Permission to get exactly two specific parameters for our function to avoid needing to push code due to an IdP change
+          - Effect: 'Allow'
+            Action:
+              - 'ssm:GetParameter'
+              - 'ssm:GetParameters'
+            Resource:
+              - 'arn:aws:ssm:${aws:region}:${aws:accountId}:parameter/serverless-jamstack-auth/backend/auth/client-id'
+              - 'arn:aws:ssm:${aws:region}:${aws:accountId}:parameter/serverless-jamstack-auth/backend/auth/client-secret'
+
+    events:
+      - httpApi:
+          path: /api/v001/user
+          method: get
+          authorizer:
+            name: kindeTokenAuthorizer
+
+custom:
+  pythonRequirements:
+    dockerizePip: true
+
