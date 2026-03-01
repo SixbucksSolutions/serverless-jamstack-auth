@@ -141,8 +141,8 @@ user    0m0.017s
 sys     0m0.004s
 ```
 
-Note: we passed the Origin request header and the API replied saying it was an allowed origin, 
-so this is a CORS-friendly API
+Note: we passed the Origin request header. The API replied with a header saying the offered origin is an allowed origin, 
+making this API CORS-friendly.
 
 #### See the effect of Lambda cold starts
 
@@ -171,7 +171,7 @@ Going from 4,100 milliseconds to under 200 milliseconds is a dramatic improvemen
 #### Test "Get User" Endpoint
 
 ```
-$ time curl -i -H "Origin: https://[your domain]" https://api.[your domain]/api/v001/user
+$ time curl -i -H "Origin: https://[your domain]" -H "Accept: application/json" https://api.[your domain]/api/v001/user
 ```
 
 Result:
