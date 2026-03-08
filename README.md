@@ -198,7 +198,7 @@ domain:
 
 #### What Got Deployed
 
-![A diagram of the backend deployment](diagrams/01%20-%20Backend%20Deployment%20-%202026-03-07.png)
+![A diagram of the backend deployment](docs/diagrams/01%20-%20Backend%20Deployment%20-%202026-03-07.png)
 
 ### Test Backend
 
