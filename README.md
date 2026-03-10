@@ -143,9 +143,6 @@ npm install -g serverless
 
 I used [Serverless Framework](https://www.serverless.com/) **version 4.33.0**.
 
-Serverless Framework V4 
-[introduced no breaking changes from version three](https://www.serverless.com/framework/docs/guides/upgrading-v4).
-
 #### Register/Login to Serverless 
 
 ```
