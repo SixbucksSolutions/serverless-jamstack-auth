@@ -384,7 +384,7 @@ Beyond scope.
     * Record type: **CNAME**
     * Alias: **no/off**
     * Value: **`[pages.dev value from Cloudflare].`**
-        * Note the trailing dot; that matters!
+        * Note the trailing dot; **that matters!**
         * e.g. `your-project.pages.dev.`
     * TTL (seconds): **60**
     * Routing policy: **Simple routing**
@@ -395,7 +395,6 @@ Beyond scope.
 1. Click blue "**Check DNS records**" button
 1. Cloudflare will say "starting search"
 1. Wait 10-20 seconds
-1. 1. Cloudflare will say "starting search"
 1. A green dialog will pop up saying "**Domain activated. Your DNS setup is complete.**"
 1. Click blue "**Continue**" link
 1. You'll be shown the list of custom domains that are active for your Cloudflare Pages site
