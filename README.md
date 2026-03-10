@@ -362,7 +362,7 @@ Beyond scope.
 
 ### What Got Deployed
 
-![A diagram of the frontend deployment](docs/diagrams/02%20-%20Frontend%20Deployment%20-%202026-03-09.png)
+![A diagram of the frontend deployment](docs/diagrams/02%20-%20Frontend%20Deployment%20-%202026-03-10.png)
 
 ### Add Custom Domain
 
